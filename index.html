@@ -76,9 +76,7 @@
                     </div>
                 </div>
                 <div class="header__block">
-                    <a href="tel:+79442341569" class="header__tel">
-                        +7 944 234 15 69
-                    </a>
+                    <a href="" class="header__tel utm-link-tel"></a>
                     <div class="button popup-contact-open">
                         Связаться с нами
                     </div>
@@ -126,51 +124,33 @@
                 <div class="container">
                     <div class="problems__container">
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Низкие
-                            </div>
                             <div class="problems__text">
-                                продажи продукта и узнаваемость бренда?
+                                Низкие продажи продукта и узнаваемость бренда?
                             </div>
                         </div>
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Не можете
-                            </div>
                             <div class="problems__text">
-                                зайти в розничную сеть и достичь целевого уровня продаж?
+                                Не можете зайти в розничную сеть и достичь целевого уровня продаж?
                             </div>
                         </div>
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Перестали
-                            </div>
                             <div class="problems__text">
-                                работать скидочные акции?
+                                Перестали работать скидочные акции?
                             </div>
                         </div>
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Сложно
-                            </div>
                             <div class="problems__text">
-                                привлечь внимание к своему бренду?
+                                Сложно привлечь внимание к своему бренду?
                             </div>
                         </div>
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Не получается
-                            </div>
                             <div class="problems__text">
-                                закрепиться в розничной сети на полке?
+                                Не получается закрепиться в розничной сети на полке?
                             </div>
                         </div>
                         <div class="problems__block">
-                            <div class="problems__title">
-                                Не можете
-                            </div>
                             <div class="problems__text">
-                                определить аватар потребителя и собрать данные о покупателях?
+                                Не можете определить аватар потребителя и собрать данные о покупателях?
                             </div>
                         </div>
                     </div>
@@ -578,9 +558,7 @@
                     <br>2021 © PromoClick.site Все права защищены.
                 </div>
                 <div class="footer__block">
-                    <a href="tel:+79442341569" class="footer__tel">
-                        +7 944 234 15 69
-                    </a>
+                    <a href="" class="footer__tel utm-link-tel"></a>
                     <div class="button popup-contact-open">
                         Связаться с нами
                     </div>
@@ -625,18 +603,17 @@
                             <input type="text" placeholder="Введите имя">
                         </div>
                         <div class="input">
-                            <input type="text" placeholder="Введите адрес электронной почты">
+                            <input type="text" class="require-or require-or-email" placeholder="Введите адрес электронной почты">
                         </div>
                         <span class="popup__separator">или</span>
                         <div class="input">
-                            <input type="text" placeholder="Номер телефона" id="phone-mask" inputmode="numeric">
+                            <input type="text" class="require-or require-or-tel" placeholder="Номер телефона" id="phone-mask" inputmode="numeric">
                         </div>
                         <label class="checkbox">
                             <input type="checkbox" checked>
                             <div class="checkbox__icon"></div>
                             <div class="checkbox__text">
-                                Настоящим подтверждаю, что я ознакомлен <a href="https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf" data-type="pdf" data-fancybox>с Политикой конфиденциальности</a> и согласен на обработку персональных
-                                данных.
+                                Настоящим подтверждаю, что я ознакомлен <a href="./doc/politic.pdf" data-type="pdf" data-fancybox>с&nbsp;Политикой конфиденциальности</a> и согласен на обработку персональных данных.
                             </div>
                         </label>
                         <label class="checkbox">
@@ -646,13 +623,13 @@
                                 Я даю согласие на получение рассылки о предложениях, информации о продуктах/услугах и иной рекламной информации.
                             </div>
                         </label>
-                        <div class="popup__button">
+                        <a href="./thanks.html" class="popup__button disabled require-or-button">
                             Отправить
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="popup__socials">
-                    <div class="popup__social">
+                    <a href="https://t.me/PromoClick?utm_source=yandex&utm_medium=cpc&utm_campaign=telegram" class="popup__social">
                         <div class="popup__social-logo">
                             <img src="./static/img/general/telegram-icon.svg" alt="">
                             <span>Связь через Telegram</span>
@@ -660,8 +637,8 @@
                         <div class="popup__social-qr">
                             <img src="./static/img/general/telegram-qr.png" alt="">
                         </div>
-                    </div>
-                    <div class="popup__social">
+                    </a>
+                    <a href="https://wa.me/79260528384?&utm_source=yandex&utm_medium=cpc&utm_campaign=whatsapp" class="popup__social">
                         <div class="popup__social-logo">
                             <img src="./static/img/general/whatsapp-icon.svg" alt="">
                             <span>Связь через What’s app</span>
@@ -669,7 +646,7 @@
                         <div class="popup__social-qr">
                             <img src="./static/img/general/whatsapp-qr.png" alt="">
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -679,6 +656,40 @@
             <img src="./static/img/general/page-up.svg" alt="">
             <img src="./static/img/general/page-up-mobile.svg" alt="">
         </div>
+
+
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        
+            ym(86224115, "init", {
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true,
+                webvisor:true
+            });
+        </script>
+        <noscript>
+            <div>
+                <img src="https://mc.yandex.ru/watch/86224115" style="position:absolute; left:-9999px;" alt="" />
+            </div>
+        </noscript>
+        <!-- /Yandex.Metrika counter -->
+
+
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-211690642-1">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+        
+            gtag('config', 'UA-211690642-1');
+        </script>
         <div class="mobile-menu">
             <div class="mobile-menu-container">
                 <div class="mobile-menu-close mobile-close-menu">
