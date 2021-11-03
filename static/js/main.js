@@ -5078,6 +5078,29 @@ function checkCookies() {
 checkCookies();
 "use strict";
 
+var regionsArea = document.querySelectorAll('[data-tooltip]');
+var mapTooltip = document.querySelector('.map-tooltip');
+var regionTooltipName = document.querySelector('.map-tooltip-region');
+
+if (regionsArea.length > 0) {
+  regionsArea.forEach(function (item) {
+    if (window.innerWidth > 991) {
+      item.addEventListener('mouseout', function () {
+        mapTooltip.classList.remove('active');
+      });
+      item.addEventListener('mouseover', function () {
+        mapTooltip.classList.add('active');
+        regionTooltipName.textContent = item.dataset.tooltip;
+      });
+      item.addEventListener('mousemove', function (e) {
+        mapTooltip.style.left = e.clientX + 20 + 'px';
+        mapTooltip.style.top = e.clientY + 20 + 'px';
+      });
+    }
+  });
+}
+"use strict";
+
 var headerLogo = document.querySelector('.header .logo');
 var headerElement = document.querySelector('.header');
 window.addEventListener('scroll', function (e) {
@@ -5104,29 +5127,6 @@ if (linkScrollTo.length > 0) {
         behavior: 'smooth'
       });
     });
-  });
-}
-"use strict";
-
-var regionsArea = document.querySelectorAll('[data-tooltip]');
-var mapTooltip = document.querySelector('.map-tooltip');
-var regionTooltipName = document.querySelector('.map-tooltip-region');
-
-if (regionsArea.length > 0) {
-  regionsArea.forEach(function (item) {
-    if (window.innerWidth > 991) {
-      item.addEventListener('mouseout', function () {
-        mapTooltip.classList.remove('active');
-      });
-      item.addEventListener('mouseover', function () {
-        mapTooltip.classList.add('active');
-        regionTooltipName.textContent = item.dataset.tooltip;
-      });
-      item.addEventListener('mousemove', function (e) {
-        mapTooltip.style.left = e.clientX + 20 + 'px';
-        mapTooltip.style.top = e.clientY + 20 + 'px';
-      });
-    }
   });
 }
 "use strict";
@@ -5302,7 +5302,6 @@ buttonUpScroll.addEventListener('click', function () {
 });
 "use strict";
 "use strict";
-"use strict";
 
 function getBodyScrollTop() {
   return self.pageYOffset || document.documentElement && document.documentElement.scrollTop || document.body && document.body.scrollTop;
@@ -5356,3 +5355,4 @@ if (document.getElementById('phone-mask')) {
     }
   };
 }
+"use strict";
