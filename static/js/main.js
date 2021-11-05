@@ -5078,29 +5078,6 @@ function checkCookies() {
 checkCookies();
 "use strict";
 
-var regionsArea = document.querySelectorAll('[data-tooltip]');
-var mapTooltip = document.querySelector('.map-tooltip');
-var regionTooltipName = document.querySelector('.map-tooltip-region');
-
-if (regionsArea.length > 0) {
-  regionsArea.forEach(function (item) {
-    if (window.innerWidth > 991) {
-      item.addEventListener('mouseout', function () {
-        mapTooltip.classList.remove('active');
-      });
-      item.addEventListener('mouseover', function () {
-        mapTooltip.classList.add('active');
-        regionTooltipName.textContent = item.dataset.tooltip;
-      });
-      item.addEventListener('mousemove', function (e) {
-        mapTooltip.style.left = e.clientX + 20 + 'px';
-        mapTooltip.style.top = e.clientY + 20 + 'px';
-      });
-    }
-  });
-}
-"use strict";
-
 var headerLogo = document.querySelector('.header .logo');
 var headerElement = document.querySelector('.header');
 window.addEventListener('scroll', function (e) {
@@ -5127,6 +5104,29 @@ if (linkScrollTo.length > 0) {
         behavior: 'smooth'
       });
     });
+  });
+}
+"use strict";
+
+var regionsArea = document.querySelectorAll('[data-tooltip]');
+var mapTooltip = document.querySelector('.map-tooltip');
+var regionTooltipName = document.querySelector('.map-tooltip-region');
+
+if (regionsArea.length > 0) {
+  regionsArea.forEach(function (item) {
+    if (window.innerWidth > 991) {
+      item.addEventListener('mouseout', function () {
+        mapTooltip.classList.remove('active');
+      });
+      item.addEventListener('mouseover', function () {
+        mapTooltip.classList.add('active');
+        regionTooltipName.textContent = item.dataset.tooltip;
+      });
+      item.addEventListener('mousemove', function (e) {
+        mapTooltip.style.left = e.clientX + 20 + 'px';
+        mapTooltip.style.top = e.clientY + 20 + 'px';
+      });
+    }
   });
 }
 "use strict";
@@ -5177,15 +5177,37 @@ window.addEventListener('scroll', function (e) {
 
 var buttonsPopup = document.querySelectorAll('.popup-contact-open');
 var popupContainer = document.querySelector('.popup-contact');
+var popupContainerSend = document.querySelector('.popup-send');
+var popupContainerThanks = document.querySelector('.popup-thanks');
 var popupClose = document.querySelectorAll('.popup__close');
 var buttonUpScroll = document.querySelector('.button-up');
 var utmLinksArray = document.querySelectorAll('.utm-link-tel');
 var popupInputs = document.querySelectorAll('.require-or');
 var popupInputsButton = document.querySelector('.require-or-button');
+var popupInputEmail = document.querySelector('.disabled-button-email');
+var buttonEmail = document.querySelector('.button-email');
+setTimeout(function () {
+  popupContainerSend.classList.add('active');
+  document.body.classList.add('no-scroll');
+}, 10000);
+popupInputEmail.addEventListener('input', function () {
+  var emailVal = popupInputEmail.value;
+
+  if (validateEmail(emailVal)) {
+    buttonEmail.classList.remove('disabled');
+  } else {
+    buttonEmail.classList.add('disabled');
+  }
+});
 
 function validateEmail(email) {
   var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
+}
+
+function popupThanksOpen() {
+  popupContainerThanks.classList.add('active');
+  document.body.classList.add('no-scroll');
 }
 
 var validatePopupForm = false;
@@ -5226,6 +5248,7 @@ function getParameterByName(name) {
 
 
 var content = getParameterByName('utm_content');
+var medium = getParameterByName('utm_medium');
 var utmNames = [{
   utmList: ['provedenie_reklamnyh_akciy_', 'marketingovoe_agentstvo', 'reklamnoe_agentstvo', 'prodvizhenie_tovara', 'provedenie_promo_akciy', 'chekovoe_promo_poisk', 'motivacionnye_programmy', 'prodvizhenie_produktov', 'marketingovye_agentstva'],
   phoneInfo: {
@@ -5245,10 +5268,18 @@ if (content.length > 0) {
     if (item.utmList.some(function (item) {
       return item === content;
     })) {
-      console.log('есть совпадение');
       defaultPhoneNumber = item.phoneInfo;
     }
   });
+}
+
+if (medium.length > 0) {
+  if (medium === 'facebook_insta_lenta') {
+    defaultPhoneNumber = {
+      text: '+7 499 677 16 58',
+      link: 'tel:+74996771658'
+    };
+  }
 }
 
 utmLinksArray.forEach(function (item) {
@@ -5278,8 +5309,20 @@ if (buttonsPopup.length > 0) {
 if (popupClose.length > 0) {
   popupClose.forEach(function (item) {
     item.addEventListener('click', function () {
-      popupContainer.classList.remove('active');
-      document.body.classList.remove('no-scroll');
+      if (item.classList.contains('popup__close-send')) {
+        popupContainerSend.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+        setTimeout(function () {
+          popupContainerSend.classList.add('active');
+          document.body.classList.add('no-scroll');
+        }, 60000);
+      } else if (item.classList.contains('popup__close-thanks')) {
+        popupContainerThanks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      } else {
+        popupContainer.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      }
     });
   });
 }
@@ -5287,6 +5330,22 @@ if (popupClose.length > 0) {
 popupContainer.addEventListener('click', function (e) {
   if (e.target === this) {
     popupContainer.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  }
+});
+popupContainerSend.addEventListener('click', function (e) {
+  if (e.target === this) {
+    popupContainerSend.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+    setTimeout(function () {
+      popupContainerSend.classList.add('active');
+      document.body.classList.add('no-scroll');
+    }, 60000);
+  }
+});
+popupContainerThanks.addEventListener('click', function (e) {
+  if (e.target === this) {
+    popupContainerThanks.classList.remove('active');
     document.body.classList.remove('no-scroll');
   }
 });
@@ -5300,6 +5359,7 @@ window.addEventListener('scroll', function (e) {
 buttonUpScroll.addEventListener('click', function () {
   goUp();
 });
+"use strict";
 "use strict";
 "use strict";
 
@@ -5355,4 +5415,3 @@ if (document.getElementById('phone-mask')) {
     }
   };
 }
-"use strict";
