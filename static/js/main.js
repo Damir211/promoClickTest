@@ -5247,39 +5247,69 @@ function getParameterByName(name) {
 } // Give the URL parameters variable names
 
 
-var content = getParameterByName('utm_content');
-var medium = getParameterByName('utm_medium');
+var sourceUtm = getParameterByName('utm_source');
+var campimngUtm = getParameterByName('utm_campaign');
 var utmNames = [{
-  utmList: ['provedenie_reklamnyh_akciy_', 'marketingovoe_agentstvo', 'reklamnoe_agentstvo', 'prodvizhenie_tovara', 'provedenie_promo_akciy', 'chekovoe_promo_poisk', 'motivacionnye_programmy', 'prodvizhenie_produktov', 'marketingovye_agentstva'],
+  utmListSource: 'yandex',
+  utmListCamping: 'chekovoe_promo_poisk',
   phoneInfo: {
-    text: '+7 499 348 89 35',
+    text: '+7 499 348 8935',
     link: 'tel:+74993488935'
   }
 }, {
-  utmList: ['marketingovoe_agentstvo_728_90', 'marketingovoe_agentstvo_640_200', 'marketingovoe_agentstvo_640_100', 'marketingovoe_agentstvo_336_280', 'marketingovoe_agentstvo_300_250', 'marketingovoe_agentstvo_240_400', 'prodvizhenie_produktov_728_90', 'prodvizhenie_produktov_640_200', 'prodvizhenie_produktov_640_100', 'prodvizhenie_produktov_336_280', 'prodvizhenie_produktov_300_250', 'prodvizhenie_produktov_240_400', 'motivacionnye_programmy_728_90', 'motivacionnye_programmy_640_200', 'motivacionnye_programmy_640_100', 'motivacionnye_programmy_336_280', 'motivacionnye_programmy_300_250', 'motivacionnye_programmy_240_400', 'chekovoe_promo_728_90', 'chekovoe_promo_640_200', 'chekovoe_promo_640_100', 'chekovoe_promo_336_280', 'chekovoe_promo_300_250', 'chekovoe_promo_240_400', 'provedenie_promo_akciy_728_90', 'provedenie_promo_akciy_640_200', 'provedenie_promo_akciy_640_100', 'provedenie_promo_akciy_336_280', 'provedenie_promo_akciy_300_250', 'provedenie_promo_akciy_240_400', 'prodvizhenie_tovara_728_90', 'prodvizhenie_tovara_640_200', 'prodvizhenie_tovara_640_100', 'prodvizhenie_tovara_336_280', 'prodvizhenie_tovara_300_250', 'prodvizhenie_tovara_240_400', 'reklamnye_agentstva_728_90', 'reklamnye_agentstva_640_200', 'reklamnye_agentstva_640_100', 'reklamnye_agentstva_336_280', 'reklamnye_agentstva_300_250', 'reklamnye_agentstva_240_400', 'marketingovye_agentstva_728_90', 'marketingovye_agentstva_640_200', 'marketingovye_agentstva_640_100', 'marketingovye_agentstva_336_280', 'marketingovye_agentstva_300_250', 'marketingovye_agentstva_240_400', 'provedenie_reklamnyh_akciy_728_90', 'provedenie_reklamnyh_akciy_640_200', 'provedenie_reklamnyh_akciy_640_100', 'provedenie_reklamnyh_akciy_336_280', 'provedenie_reklamnyh_akciy_300_250', 'provedenie_reklamnyh_akciy_240_400'],
+  utmListSource: 'yandex',
+  utmListCamping: 'chekovoe_promo_rsya',
   phoneInfo: {
-    text: '+7 499 113 70 38',
+    text: '+7 499 113 7038',
     link: 'tel:+74991137038'
+  }
+}, {
+  utmListSource: 'yandex_direct',
+  phoneInfo: {
+    text: '+7 499 490 6028',
+    link: 'tel:+74994906028'
+  }
+}, {
+  utmListSource: 'vkontakt',
+  phoneInfo: {
+    text: '+7 499 346 8698',
+    link: 'tel:+74993468698'
+  }
+}, {
+  utmListSource: 'msk_spb',
+  phoneInfo: {
+    text: '+7 499 677 1658',
+    link: 'tel:+74996771658'
+  }
+}, {
+  utmListSource: 'gr1_russia',
+  phoneInfo: {
+    text: '+7 499 286 8832',
+    link: 'tel:+74992868832'
+  }
+}, {
+  utmListSource: 'google_ads_search',
+  phoneInfo: {
+    text: '+7 499 286 9857',
+    link: 'tel:+74992869857'
+  }
+}, {
+  utmListSource: 'yandex',
+  utmListCamping: 'dzen',
+  phoneInfo: {
+    text: '+7 499 346 7718',
+    link: 'tel:+74993467718'
   }
 }];
 
-if (content.length > 0) {
+if (sourceUtm.length > 0) {
   utmNames.forEach(function (item) {
-    if (item.utmList.some(function (item) {
-      return item === content;
-    })) {
+    if (item.utmListSource === sourceUtm && 'yandex' !== sourceUtm) {
+      defaultPhoneNumber = item.phoneInfo;
+    } else if (item.utmListSource === sourceUtm && item.utmListCamping === campimngUtm) {
       defaultPhoneNumber = item.phoneInfo;
     }
   });
-}
-
-if (medium.length > 0) {
-  if (medium === 'facebook_insta_lenta') {
-    defaultPhoneNumber = {
-      text: '+7 499 677 16 58',
-      link: 'tel:+74996771658'
-    };
-  }
 }
 
 utmLinksArray.forEach(function (item) {
