@@ -5078,34 +5078,6 @@ function checkCookies() {
 checkCookies();
 "use strict";
 
-var mobileOpen = document.querySelector('.header__menubtn');
-var mobileMenu = document.querySelector('.mobile-menu');
-var mobileMenuClose = document.querySelectorAll('.mobile-close-menu');
-mobileOpen.addEventListener('click', function () {
-  mobileMenu.classList.add('active');
-  document.body.classList.add('no-scroll');
-});
-
-if (mobileMenuClose.length > 0) {
-  mobileMenuClose.forEach(function (item) {
-    item.addEventListener('click', function () {
-      mobileMenu.classList.remove('active');
-
-      if (!item.classList.contains('button')) {
-        document.body.classList.remove('no-scroll');
-      }
-    });
-  });
-}
-
-mobileMenu.addEventListener('click', function (e) {
-  if (e.target === this) {
-    mobileMenu.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-  }
-});
-"use strict";
-
 var headerLogo = document.querySelector('.header .logo');
 var headerElement = document.querySelector('.header');
 window.addEventListener('scroll', function (e) {
@@ -5157,6 +5129,50 @@ if (regionsArea.length > 0) {
     }
   });
 }
+"use strict";
+
+var mobileOpen = document.querySelector('.header__menubtn');
+var mobileMenu = document.querySelector('.mobile-menu');
+var mobileMenuClose = document.querySelectorAll('.mobile-close-menu');
+mobileOpen.addEventListener('click', function () {
+  mobileMenu.classList.add('active');
+  document.body.classList.add('no-scroll');
+});
+
+if (mobileMenuClose.length > 0) {
+  mobileMenuClose.forEach(function (item) {
+    item.addEventListener('click', function () {
+      mobileMenu.classList.remove('active');
+
+      if (!item.classList.contains('button')) {
+        document.body.classList.remove('no-scroll');
+      }
+    });
+  });
+}
+
+mobileMenu.addEventListener('click', function (e) {
+  if (e.target === this) {
+    mobileMenu.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  }
+});
+"use strict";
+
+var partnersContainer = document.querySelector('.partners__container');
+var partnersContainerItems = document.querySelectorAll('.partners__firm');
+window.addEventListener('scroll', function (e) {
+  var initedPartner = false;
+
+  if (window.innerHeight - 100 > partnersContainer.getBoundingClientRect().top && 100 - window.innerHeight < partnersContainer.getBoundingClientRect().top && !initedPartner) {
+    initedPartner = true;
+    partnersContainerItems.forEach(function (item, index) {
+      setTimeout(function () {
+        item.classList.add('active');
+      }, (index + 1) * 500);
+    });
+  }
+});
 "use strict";
 
 var buttonsPopup = document.querySelectorAll('.popup-contact-open');
@@ -5329,7 +5345,7 @@ if (popupClose.length > 0) {
         setTimeout(function () {
           popupContainerSend.classList.add('active');
           document.body.classList.add('no-scroll');
-        }, 30000);
+        }, 10000);
       } else if (item.classList.contains('popup__close-thanks')) {
         popupContainerThanks.classList.remove('active');
         document.body.classList.remove('no-scroll');
@@ -5354,7 +5370,7 @@ popupContainerSend.addEventListener('click', function (e) {
     setTimeout(function () {
       popupContainerSend.classList.add('active');
       document.body.classList.add('no-scroll');
-    }, 30000);
+    }, 10000);
   }
 });
 popupContainerThanks.addEventListener('click', function (e) {
@@ -5372,22 +5388,6 @@ window.addEventListener('scroll', function (e) {
 });
 buttonUpScroll.addEventListener('click', function () {
   goUp();
-});
-"use strict";
-
-var partnersContainer = document.querySelector('.partners__container');
-var partnersContainerItems = document.querySelectorAll('.partners__firm');
-window.addEventListener('scroll', function (e) {
-  var initedPartner = false;
-
-  if (window.innerHeight - 100 > partnersContainer.getBoundingClientRect().top && 100 - window.innerHeight < partnersContainer.getBoundingClientRect().top && !initedPartner) {
-    initedPartner = true;
-    partnersContainerItems.forEach(function (item, index) {
-      setTimeout(function () {
-        item.classList.add('active');
-      }, (index + 1) * 500);
-    });
-  }
 });
 "use strict";
 "use strict";
