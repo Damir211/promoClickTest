@@ -5249,6 +5249,9 @@ function getParameterByName(name) {
 
 var sourceUtm = getParameterByName('utm_source');
 var campimngUtm = getParameterByName('utm_campaign');
+var utmContent = getParameterByName('utm_content');
+var whereClientUrl = '';
+var inputsWhere = document.querySelectorAll('.where-info');
 var utmNames = [{
   utmListSource: 'yandex',
   utmListCamping: 'chekovoe_promo_poisk',
@@ -5300,6 +5303,18 @@ var utmNames = [{
     text: '+7 499 346 7718',
     link: 'tel:+74993467718'
   }
+}, {
+  utmListSource: 'facebook',
+  phoneInfo: {
+    text: '+7 499 677 1658',
+    link: 'tel:+74996771658'
+  }
+}, {
+  utmListSource: 'instagram',
+  phoneInfo: {
+    text: '+7 499 286 8832',
+    link: 'tel:+74992868832'
+  }
 }];
 
 if (sourceUtm.length > 0) {
@@ -5308,6 +5323,18 @@ if (sourceUtm.length > 0) {
       defaultPhoneNumber = item.phoneInfo;
     } else if (item.utmListSource === sourceUtm && item.utmListCamping === campimngUtm) {
       defaultPhoneNumber = item.phoneInfo;
+    }
+
+    if (sourceUtm === 'yandex') {
+      whereClientUrl = 'Yandex ' + campimngUtm + ': ' + utmContent;
+    } else {
+      whereClientUrl = sourceUtm + ': ' + campimngUtm;
+    }
+
+    if (inputsWhere.length > 0) {
+      inputsWhere.forEach(function (item) {
+        item.value = whereClientUrl;
+      });
     }
   });
 }
