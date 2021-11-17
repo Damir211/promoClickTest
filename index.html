@@ -86,8 +86,8 @@
                     <div class="header__link" data-scroll-to="partners">
                         Наши клиенты
                     </div>
-                    <div class="header__link" data-scroll-to="map">
-                        Регион охвата
+                    <div class="header__link header__link-btn popup-contact-company-open">
+                        Если вы агенство
                     </div>
                 </div>
                 <div class="header__block">
@@ -118,8 +118,8 @@
                         <div class="banner__text">
                             Используем кастомизированные решения для проведения мотивационных промо с использованием современных IT решений и технологий Digital маркетинга, повышающие конверсии при касании с участниками акций
                         </div>
-                        <div class="button popup-contact-open">
-                            Связаться с нами
+                        <div class="button popup-case-open">
+                            Получите наши кейсы
                         </div>
                     </div>
                     <div class="banner__img">
@@ -736,6 +736,77 @@
             </script>
         </div>
 
+        <div class="popup popup-contact-company">
+            <div class="popup__container">
+                <div class="popup__close popup__close-company">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0395 19.9864L39.4247 3.26802C39.7827 2.90004 39.9806 2.40615 39.9752 1.89374C39.9698 1.38134 39.7617 0.891652 39.396 0.53118C39.2154 0.352948 39.0011 0.212243 38.7655 0.116996C38.5299 0.0217491 38.2776 -0.0260105 38.0233 -0.0235984C37.769 -0.0211864 37.5178 0.0313878 37.2841 0.131087C37.0503 0.230787 36.8387 0.375519 36.6615 0.557146L20.3049 17.2497L3.27129 0.53118C3.09054 0.353105 2.87623 0.212461 2.64063 0.117313C2.40503 0.0221642 2.15284 -0.025535 1.89862 -0.0231235C1.64441 -0.0207119 1.39314 0.0318031 1.1594 0.131404C0.92566 0.231005 0.714076 0.375674 0.536767 0.557146C0.178394 0.924794 -0.0199251 1.41855 -0.0150489 1.93095C-0.0101727 2.44336 0.197451 2.93302 0.562756 3.29383L17.5717 19.9864L0.562756 36.679C0.197451 37.0398 -0.0101727 37.5297 -0.0150489 38.0421C-0.0199251 38.5545 0.178394 39.0482 0.536767 39.4159C0.713896 39.5977 0.9254 39.7426 1.15916 39.8424C1.39292 39.9422 1.64431 39.9948 1.89862 39.9973C2.15294 39.9997 2.40516 39.9518 2.64079 39.8565C2.87641 39.7612 3.09072 39.6201 3.27129 39.4417L20.3049 22.7233L36.6615 39.4159C36.8409 39.6006 37.0558 39.7474 37.2934 39.8476C37.5309 39.9479 37.7863 39.9996 38.0444 39.9995C38.2959 40.0004 38.5452 39.9516 38.7777 39.8559C39.0102 39.7601 39.2212 39.6193 39.3987 39.4417C39.7643 39.0812 39.9724 38.5917 39.9777 38.0793C39.9831 37.5669 39.7853 37.073 39.4273 36.705L23.0395 19.9864Z"
+                        fill="#ED5736" />
+                    </svg>
+                </div>
+                <div class="popup__block">
+                    <div class="popup__info">
+                        <div class="popup__title">
+                            Оставьте свои <span>контакты</span>
+                        </div>
+                        <div class="popup__text">
+                            Мы свяжемся с вами в ближайшее время <span>в ближайшее время</span>
+                        </div>
+                    </div>
+                    <div class="popup__form">
+                        <input type="hidden" class="where-info">
+                        <div class="input">
+                            <input type="text" placeholder="Введите имя">
+                        </div>
+                        <div class="input">
+                            <input type="text" class="require-or require-or-tel" placeholder="Номер телефона" id="phone-mask" inputmode="numeric">
+                        </div>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <div class="checkbox__text">
+                                Настоящим подтверждаю, что я ознакомлен <a href="./doc/politic.pdf" data-type="pdf" data-fancybox>с&nbsp;Политикой конфиденциальности</a> и согласен на обработку персональных данных.
+                            </div>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <div class="checkbox__text">
+                                Я даю согласие на получение рассылки о предложениях, информации о продуктах/услугах и иной рекламной информации.
+                            </div>
+                        </label>
+                        <a href="#" class="popup__button disabled require-or-button" id="send-form">
+                            Отправить
+                        </a>
+                    </div>
+                </div>
+                <div class="popup__socials">
+                    <a href="https://t.me/PromoClick?utm_source=yandex&utm_medium=cpc&utm_campaign=telegram" class="popup__social">
+                        <div class="popup__social-logo">
+                            <img src="./static/img/general/telegram-icon.svg" alt="">
+                            <span>Связь через Telegram</span>
+                        </div>
+                        <div class="popup__social-qr">
+                            <img src="./static/img/general/telegram-qr.png" alt="">
+                        </div>
+                    </a>
+                    <a href="https://wa.me/79260528384?&utm_source=yandex&utm_medium=cpc&utm_campaign=whatsapp" class="popup__social">
+                        <div class="popup__social-logo">
+                            <img src="./static/img/general/whatsapp-icon.svg" alt="">
+                            <span>Связь через What’s app</span>
+                        </div>
+                        <div class="popup__social-qr">
+                            <img src="./static/img/general/whatsapp-qr.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <script>
+                fbq('track', 'Lеad');
+            </script>
+        </div>
+
+
         <script>
             const sendFormButton = document.getElementById('send-form');
             sendFormButton.addEventListener('click', function(){
@@ -843,6 +914,9 @@
                     </div>
                     <div class="mobile-menu-link mobile-close-menu" data-scroll-to="map">
                         Регион охвата
+                    </div>
+                    <div class="mobile-menu-link mobile-close-menu header__link-btn popup-contact-company-open">
+                        Если вы агенство
                     </div>
                 </div>
                 <div class="button mobile-close-menu popup-contact-open">

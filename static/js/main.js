@@ -5176,6 +5176,7 @@ window.addEventListener('scroll', function (e) {
 "use strict";
 
 var buttonsPopup = document.querySelectorAll('.popup-contact-open');
+var buttonsPopupCompany = document.querySelectorAll('.popup-contact-company-open');
 var popupContainer = document.querySelector('.popup-contact');
 var popupContainerSend = document.querySelector('.popup-send');
 var popupContainerThanks = document.querySelector('.popup-thanks');
@@ -5186,10 +5187,20 @@ var popupInputs = document.querySelectorAll('.require-or');
 var popupInputsButton = document.querySelector('.require-or-button');
 var popupInputEmail = document.querySelector('.disabled-button-email');
 var buttonEmail = document.querySelector('.button-email');
-setTimeout(function () {
-  popupContainerSend.classList.add('active');
-  document.body.classList.add('no-scroll');
-}, 10000);
+var popupCompanyContact = document.querySelector('.popup-contact-company');
+var popupCaseOpenButtons = document.querySelectorAll('.popup-case-open');
+var advantageBlock = document.getElementById('advantage');
+var advantageBlockStatusScroll = true;
+
+if (popupCaseOpenButtons.length > 0) {
+  popupCaseOpenButtons.forEach(function (item) {
+    item.addEventListener('click', function () {
+      popupContainerSend.classList.add('active');
+      document.body.classList.add('no-scroll');
+    });
+  });
+}
+
 popupInputEmail.addEventListener('input', function () {
   var emailVal = popupInputEmail.value;
 
@@ -5363,18 +5374,26 @@ if (buttonsPopup.length > 0) {
   });
 }
 
+if (buttonsPopupCompany.length > 0) {
+  buttonsPopupCompany.forEach(function (item) {
+    item.addEventListener('click', function () {
+      popupCompanyContact.classList.add('active');
+      document.body.classList.add('no-scroll');
+    });
+  });
+}
+
 if (popupClose.length > 0) {
   popupClose.forEach(function (item) {
     item.addEventListener('click', function () {
       if (item.classList.contains('popup__close-send')) {
         popupContainerSend.classList.remove('active');
         document.body.classList.remove('no-scroll');
-        setTimeout(function () {
-          popupContainerSend.classList.add('active');
-          document.body.classList.add('no-scroll');
-        }, 10000);
       } else if (item.classList.contains('popup__close-thanks')) {
         popupContainerThanks.classList.remove('active');
+        document.body.classList.remove('no-scroll');
+      } else if (item.classList.contains('popup__close-company')) {
+        popupCompanyContact.classList.remove('active');
         document.body.classList.remove('no-scroll');
       } else {
         popupContainer.classList.remove('active');
@@ -5387,6 +5406,12 @@ if (popupClose.length > 0) {
 popupContainer.addEventListener('click', function (e) {
   if (e.target === this) {
     popupContainer.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+  }
+});
+popupCompanyContact.addEventListener('click', function (e) {
+  if (e.target === this) {
+    popupCompanyContact.classList.remove('active');
     document.body.classList.remove('no-scroll');
   }
 });
@@ -5411,6 +5436,16 @@ window.addEventListener('scroll', function (e) {
     buttonUpScroll.classList.add('active');
   } else {
     buttonUpScroll.classList.remove('active');
+  }
+
+  if (getBodyScrollTop() > advantageBlock.offsetTop + advantageBlock.offsetHeight && advantageBlockStatusScroll) {
+    popupContainerSend.classList.add('active');
+    document.body.classList.add('no-scroll');
+    advantageBlockStatusScroll = false;
+  }
+
+  if (getBodyScrollTop() < advantageBlock.offsetTop) {
+    advantageBlockStatusScroll = true;
   }
 });
 buttonUpScroll.addEventListener('click', function () {
