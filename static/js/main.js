@@ -5507,3 +5507,17 @@ if (document.getElementById('phone-mask')) {
     }
   };
 }
+
+if (document.getElementById('phone-mask-form')) {
+  var documentPhoneInput2 = document.getElementById('phone-mask-form');
+  var phoneMask2 = IMask(documentPhoneInput2, {
+    mask: '+{7} (000) 000 00 00'
+  });
+
+  documentPhoneInput2.onfocus = function () {
+    if (this.value.length === 0) {
+      this.value = "+7 (";
+      phoneMask2.updateValue();
+    }
+  };
+}
