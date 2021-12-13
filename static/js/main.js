@@ -5246,8 +5246,8 @@ popupInputs.forEach(function (item) {
   });
 });
 var defaultPhoneNumber = {
-  text: '+7 499 490 60 28',
-  link: 'tel:+74994906028'
+  text: '+7 499 346 6889',
+  link: 'tel:+74993466889'
 };
 
 function getParameterByName(name) {
@@ -5330,18 +5330,11 @@ var utmNames = [{
 
 if (sourceUtm.length > 0) {
   utmNames.forEach(function (item) {
-    if (item.utmListSource === sourceUtm && 'yandex' !== sourceUtm) {
-      defaultPhoneNumber = item.phoneInfo;
-    } else if (item.utmListSource === sourceUtm && item.utmListCamping === campimngUtm) {
-      defaultPhoneNumber = item.phoneInfo;
-    }
-
     if (sourceUtm === 'yandex') {
       whereClientUrl = 'Yandex ' + campimngUtm + ': ' + utmContent;
     } else {
       whereClientUrl = sourceUtm + ': ' + campimngUtm;
     }
-
     if (inputsWhere.length > 0) {
       inputsWhere.forEach(function (item) {
         item.value = whereClientUrl;
